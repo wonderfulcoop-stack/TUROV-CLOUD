@@ -1,0 +1,386 @@
+<!doctype html><html lang="ru"><%- include('head',{title}) %><body class="drive-app"><script>try{if(sessionStorage.getItem('tc_splash_seen')==='1')document.documentElement.classList.add('tc-splash-seen')}catch(e){}</script><div id="tcPreloader" class="tc-preloader" aria-hidden="true"><div class="tc-preloader-mark"><span class="tc-preloader-logo"><img src="/assets/logo.png" alt="" onerror="this.style.display='none';this.parentElement.classList.add('fallback')"></span><span class="tc-preloader-name">Turov Cloud</span></div></div>
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-logo" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V5m0 0 4 4m-4-4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 19h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m4 11 8-7 8 7v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21v-6h6v6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M3 6h.01M3 12h.01M3 18h.01" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></symbol>
+  <symbol id="i-stats" viewBox="0 0 24 24"><path d="M5 19V10M12 19V5M19 19v-7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 3v5h5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3" fill="none" stroke="currentColor" stroke-width="2"/><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 14.7A8 8 0 0 1 9.3 3 9 9 0 1 0 21 14.7Z" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2m0 16v2M4 12H2m20 0h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-lang" viewBox="0 0 24 24"><path d="M4 5h10M9 3v2m1 14 5-11 5 11m-8-4h6M5 8c1 4 4 7 8 8m0-8c-1 3-4 7-8 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><path d="M8 8h11v11H8z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M5 16H4a1 1 0 0 1-1-1V5a2 2 0 0 1 2-2h10a1 1 0 0 1 1 1v1" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M10 14 20 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2m-10 0 1 15h10l1-15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><path d="M4 7h16a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 11h20M6 15h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 4h4a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol><symbol id="i-key" viewBox="0 0 24 24"><path d="M14 7a5 5 0 1 0 2.2 4.1L22 5.3V3h-2.3l-1.4 1.4L17 3.1 15.1 5 16.4 6.3 15 7.7A5 5 0 0 0 14 7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M7 12h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol></svg>
+<aside class="drive-sidebar">
+  <button class="mobile-menu-toggle" type="button" onclick="openMobileDrawer()" aria-label="Меню"><svg><use href="#i-menu"/></svg></button>
+  <a class="drive-brand" href="/dashboard"><span class="drive-logo asset-logo"><img src="/assets/logo.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><svg><use href="#i-logo"/></svg></span><span>Turov Cloud</span></a>
+  <div class="side-upload-form">
+    <form action="/upload" method="post" enctype="multipart/form-data" class="upload-choice-wrap">
+      <input type="hidden" name="folder_id" value="<%= folder || '' %>">
+      <button class="drive-upload upload-trigger" type="button" onclick="toggleUploadMenu(event,this)"><svg><use href="#i-upload"/></svg><span data-i18n="upload">Загрузить файл</span></button>
+      <div class="upload-menu">
+        <label class="upload-menu-item"><svg><use href="#i-upload"/></svg><span data-i18n="publicFile">Публичный файл</span><input name="file" type="file" data-visibility="public" onchange="startUploadAnimation(this,'public')"></label>
+        <label class="upload-menu-item"><svg><use href="#i-lock"/></svg><span data-i18n="privateFile">Приватный файл</span><input name="file" type="file" data-visibility="private" onchange="startUploadAnimation(this,'private')"></label>
+      </div>
+    </form>
+    <button class="round-upload" type="button" title="Новая папка" onclick="openFolderModal()"><svg><use href="#i-folder"/></svg></button>
+  </div>
+  <nav class="drive-nav">
+    <a class="<%= tab==='files'?'active':'' %>" href="/dashboard"><span><svg><use href="#i-home"/></svg></span><b data-i18n="home">Главная</b></a>
+    <a class="<%= tab==='files'?'active':'' %>" href="/dashboard"><span><svg><use href="#i-folder"/></svg></span><b data-i18n="files">Файлы</b><em><%= files.length + folders.length %></em></a>
+    <a class="<%= tab==='stats'?'active':'' %>" href="/dashboard?tab=stats"><span><svg><use href="#i-stats"/></svg></span><b>Статистика</b></a>
+    <button type="button" class="nav-fake support-nav" onclick="openSupportChat()"><span class="support-mini-icon">💬</span><b>Поддержка</b></button>
+  </nav>
+  <div class="settings-title" data-i18n="settings">Настройки</div>
+  <nav class="drive-nav compact">
+    <button type="button" class="nav-fake" onclick="toggleLang()"><span><svg><use href="#i-lang"/></svg></span><b data-i18n="language">Язык</b><i id="langBadge">RU</i></button>
+    <button type="button" class="nav-fake" onclick="toggleTheme()"><span><svg id="themeIcon"><use href="#i-moon"/></svg></span><b data-i18n="theme">Тема</b><i id="themeBadge">dark</i></button>
+  </nav>
+  <% if(!isPremium){ %><button class="drive-premium" type="button" onclick="openPremiumModal()"><b data-i18n="premium">Улучшить до Premium</b><small data-i18n="premiumSub">4 ГБ · 24 часа · умный ИИ</small><i>›</i></button><% } else { %><div class="premium-active-card"><b>Premium активен <span class="premium-star">✦</span></b><small>4 ГБ · 24 часа · умный ИИ</small></div><% } %>
+  <div class="drive-profile">
+    <span><%= (user.name||'U').slice(0,1).toLowerCase() %></span>
+    <div><b><%= user.name %> <% if(isPremium){ %><span class="premium-star" title="Premium">✦</span><% } %></b><small><%= user.email %></small></div>
+    <button type="button" onclick="toggleProfileMenu(event)" aria-label="Меню профиля">⋮</button>
+    <div class="profile-menu account-popover" id="profileMenu">
+      <div class="account-head"><span><%= (user.name||'U').slice(0,1).toLowerCase() %></span><div><b><%= user.name %> <% if(isPremium){ %><span class="premium-star" title="Premium">✦</span><% } %></b><small><%= user.email %></small></div></div>
+      <button type="button" onclick="openNameModal()"><svg><use href="#i-user"/></svg><span data-i18n="changeName">Изменить имя</span></button>
+      <button type="button" onclick="openPasswordModal()"><svg><use href="#i-card"/></svg><span data-i18n="changePassword">Изменить пароль</span></button>
+      <button type="button" onclick="registerPasskey(this)"><svg><use href="#i-key"/></svg><span>Face ID / Windows Hello</span></button>
+      <% if(user.role==='admin'){ %><a href="/admin"><svg><use href="#i-logo"/></svg><span data-i18n="admin">Админ-панель</span></a><% } %>
+      <form method="post" action="/logout"><button type="submit"><svg><use href="#i-logout"/></svg><span data-i18n="logout">Выйти</span></button></form>
+    </div>
+  </div>
+</aside>
+<main class="drive-main">
+  <header class="drive-topbar"><button class="iconbtn"><svg><use href="#i-logo"/></svg></button><div class="divider"></div></header>
+  <section class="drive-content <%= tab==='stats'?'stats-content':'' %>" id="dropZone">
+  <% if(tab==='stats'){ %>
+    <section class="stats-dashboard clean-stats" id="statsDashboard">
+      <div class="stats-head">
+        <div>
+          <h1>Статистика</h1>
+          <p>Живые просмотры, скачивания и расчёт дохода.</p>
+        </div>
+        <button class="stats-period" type="button">Последние 30 дней</button>
+      </div>
+
+      <div class="stats-kpis clean-kpis">
+        <article>
+          <small>Частота скачивания ⓘ</small>
+          <b id="kpiRate"><%= statsPage.downloadRate.toFixed(2) %>%</b>
+          <em>Скачивания / просмотры</em>
+          <i id="kpiDownloads"><%= statsPage.downloads %> скач.</i>
+        </article>
+        <article>
+          <small>С 1 000 просмотров ⓘ</small>
+          <b id="kpiRpm">$<%= ((statsPage.views/1000)*0.1).toFixed(2) %></b>
+          <em>$0.10 за 1000 просмотров</em>
+          <i id="kpiViews"><%= statsPage.views %> просмотров</i>
+        </article>
+        <article>
+          <small>С посетителя ⓘ</small>
+          <b id="kpiVisitor">$<%= (statsPage.visitors ? ((statsPage.views/1000)*0.1)/statsPage.visitors : 0).toFixed(3) %></b>
+          <em>Доход / посетители</em>
+          <i id="kpiVisitors"><%= statsPage.visitors %> посет.</i>
+        </article>
+      </div>
+
+      <section class="stats-card live-chart-card">
+        <div class="stats-card-title">
+          <div>
+            <h2>Живой график активности</h2>
+            <p>Линия обновляется автоматически без перезагрузки страницы.</p>
+          </div>
+          <div class="chart-legend">
+            <span><i class="dot views"></i>Просмотры</span>
+            <span><i class="dot downloads"></i>Скачивания</span>
+          </div>
+        </div>
+        <div class="chart-wrap"><canvas id="statsLiveChart"></canvas></div>
+      </section>
+    </section>
+
+  <% } else { %>
+    <div class="files-toolbar">
+      <div class="pathline">/ <%= currentFolder ? currentFolder.name : '' %></div>
+      <div class="toolbar-actions">
+        <input class="search" data-i18n-placeholder="search" placeholder="Поиск..." oninput="filterFiles(this.value)">
+        <div class="sort-wrap"><button class="sortbtn" type="button" onclick="toggleSortMenu(event)"><span id="sortLabel" data-i18n="dateSort">По дате</span></button><div class="sort-menu" id="sortMenu"><button type="button" onclick="sortFiles('newest')">Сначала новые</button><button type="button" onclick="sortFiles('oldest')">Сначала старые</button></div></div>
+        <button class="folderbtn" type="button" onclick="openFolderModal()" data-i18n="newFolder">Новая папка</button>
+        <form action="/upload" method="post" enctype="multipart/form-data" class="upload-choice-wrap top-upload-wrap"><input type="hidden" name="folder_id" value="<%= folder || '' %>"><button class="top-upload upload-trigger" type="button" onclick="toggleUploadMenu(event,this)"><span data-i18n="upload">Загрузить файл</span></button><div class="upload-menu"><label class="upload-menu-item"><svg><use href="#i-upload"/></svg><span data-i18n="publicFile">Публичный файл</span><input name="file" type="file" data-visibility="public" onchange="startUploadAnimation(this,'public')"></label><label class="upload-menu-item"><svg><use href="#i-lock"/></svg><span data-i18n="privateFile">Приватный файл</span><input name="file" type="file" data-visibility="private" onchange="startUploadAnimation(this,'private')"></label></div></form>
+      </div>
+    </div>
+    <% if(!currentFolder && folders.length){ %>
+      <div class="folder-grid"><% folders.forEach(fd=>{ %>
+        <a class="folder-card search-item" data-name="<%= fd.name.toLowerCase() %>" href="/dashboard?folder=<%= fd.id %>"><div class="folder-icon"><svg><use href="#i-folder"/></svg></div><b><%= fd.name %></b></a>
+      <% }) %></div>
+    <% } %>
+    <% if(files.length===0 && (!folders.length || currentFolder)){ %>
+      <div class="drive-empty">
+        <div class="empty-visual">
+          <img class="empty-gif" src="/assets/duck.gif" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div class="empty-ill fallback-duck" style="display:none"><div class="cloud"></div><div class="duck-dot"></div><svg><use href="#i-file"/></svg></div>
+        </div>
+        <h2 data-i18n="noFiles">Пока нет файлов</h2>
+        <p data-i18n="noFilesSub">Загрузите свой первый файл или перетащите<br>его прямо сюда</p>
+        <div class="empty-actions">
+          <form action="/upload" method="post" enctype="multipart/form-data" class="upload-choice-wrap empty-upload-wrap"><input type="hidden" name="folder_id" value="<%= folder || '' %>"><button class="empty-upload upload-trigger" type="button" onclick="toggleUploadMenu(event,this)"><span data-i18n="upload">Загрузить файл</span></button><div class="upload-menu"><label class="upload-menu-item"><svg><use href="#i-upload"/></svg><span data-i18n="publicFile">Публичный файл</span><input name="file" type="file" data-visibility="public" onchange="startUploadAnimation(this,'public')"></label><label class="upload-menu-item"><svg><use href="#i-lock"/></svg><span data-i18n="privateFile">Приватный файл</span><input name="file" type="file" data-visibility="private" onchange="startUploadAnimation(this,'private')"></label></div></form>
+          <button class="empty-folder" type="button" onclick="openFolderModal()" data-i18n="newFolder">Новая папка</button>
+        </div>
+      </div>
+    <% } else if(files.length){ %>
+      <div class="selection-toolbar" id="selectionToolbar" aria-hidden="true">
+        <div class="selection-count"><b id="selectedCount">0</b> <span data-i18n="selected">выбрано</span></div>
+        <button class="bulk-btn" type="button" onclick="selectAllFiles()" data-i18n="selectAll">Выбрать все</button>
+        <button class="bulk-btn" type="button" onclick="clearSelection()" data-i18n="clearSelection">Снять</button>
+        <form id="bulkMoveForm" method="post" action="/batch/move" class="bulk-move-form">
+          <input type="hidden" name="ids" id="bulkMoveIds">
+          <select name="folder_id" id="bulkFolderSelect">
+            <option value="" data-i18n="rootFolder">В корень</option>
+            <% folders.forEach(fd=>{ %><option value="<%= fd.id %>"><%= fd.name %></option><% }) %>
+          </select>
+          <button class="bulk-btn" type="button" onclick="submitBulkMove()" data-i18n="moveSelected">Переместить</button>
+        </form>
+        <button class="bulk-btn danger" type="button" onclick="submitBulkDelete()"><svg><use href="#i-trash"/></svg><span data-i18n="deleteSelected">Удалить</span></button>
+        <form id="bulkDeleteForm" method="post" action="/batch/delete"><input type="hidden" name="ids" id="bulkDeleteIds"></form>
+      </div>
+      <div class="drive-grid" id="files"><% files.forEach((f,idx)=>{ %>
+        <article class="file-card search-item <%= f.is_private ? 'private' : '' %>" data-id="<%= f.id %>" data-index="<%= idx %>" data-date="<%= f.created_at || (f.expires_at - 3600000) %>" data-name="<%= f.original_name.toLowerCase() %>" onclick="openDetails(Number(this.dataset.index))">
+          <label class="select-file" onclick="event.stopPropagation()" title="Выбрать файл"><input type="checkbox" value="<%= f.id %>" onchange="updateSelection()"><span></span></label>
+          <div class="file-icon"><svg><use href="<%= f.is_private ? '#i-lock' : '#i-file' %>"/></svg></div>
+          <div class="file-meta"><b title="<%= f.original_name %>"><%= f.original_name %></b><small><% if(f.is_private){ %><span class="private-chip">Private</span> <% } %><span class="meta-size"><%= fmt(f.size) %></span> <span class="sep">|</span> <span data-i18n="deleteIn">удалится через</span> <%= Math.max(0,Math.ceil((f.expires_at-now)/60000)) %> <span data-i18n="min">мин.</span></small></div><button class="file-dots" type="button" aria-label="Действия" onclick="openFileMenu(event,Number(this.closest('.file-card').dataset.index))">⋮</button>
+        </article>
+      <% }) %></div>
+    <% } %>
+  <% } %>
+  </section>
+</main>
+<aside class="details-panel" id="detailsPanel"><button class="panel-close" type="button" onclick="closeDetails()">×</button><div id="detailsInner"></div></aside>
+<nav class="mobile-bottom-nav" aria-label="Мобильная навигация">
+  <a class="<%= tab==='files'?'active':'' %>" href="/dashboard"><svg><use href="#i-home"/></svg><span data-i18n="home">Главная</span></a>
+  <a href="/dashboard"><svg><use href="#i-folder"/></svg><span data-i18n="files">Файлы</span><em><%= files.length + folders.length %></em></a>
+  <a class="<%= tab==='stats'?'active':'' %>" href="/dashboard?tab=stats"><svg><use href="#i-stats"/></svg><span>Статистика</span></a>
+  <button type="button" onclick="toggleMobileAccount()"><span class="mini-avatar"><%= (user.name||'U').slice(0,1).toLowerCase() %></span><span data-i18n="account">Аккаунт</span></button>
+</nav>
+<div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" onclick="closeMobileDrawer()"></div>
+<form class="mobile-fab-upload" id="mobileFabUpload" action="/upload" method="post" enctype="multipart/form-data">
+  <input type="hidden" name="folder_id" value="<%= folder || '' %>">
+  <input id="mobileFabInput" name="file" type="file" data-visibility="public" onchange="startUploadAnimation(this,'public')">
+  <button type="button" onclick="document.getElementById('mobileFabInput').click()" aria-label="Загрузить файл">+</button>
+</form>
+<div class="support-chat" id="supportChat">
+  <div class="support-head"><button type="button" onclick="closeSupportChat()">‹</button><div class="support-head-info"><div class="support-title-line"><b>Turov Cloud</b><span class="support-online"><i></i>Онлайн</span></div><span class="support-subtitle">Обычно отвечаем в течение нескольких минут</span></div><button type="button" onclick="closeSupportChat()">×</button></div>
+  <div class="support-messages" id="supportMessages"><div class="support-empty">Напишите вопрос — мы поможем.</div></div>
+  <div class="support-drop-overlay" id="supportDropOverlay"><div class="support-drop-card"><div class="eye">👀</div><b>Перетащите файл сюда</b><span>Фото, архивы и документы прикрепятся к сообщению</span></div></div>
+  <div class="support-file-chip" id="supportFileChip" style="display:none"></div>
+  <form class="support-input" onsubmit="sendSupportMessage(event)">
+    <input id="supportFile" name="file" type="file" onchange="showSupportFileName()" hidden>
+    <button class="support-attach" type="button" onclick="document.getElementById('supportFile').click()" aria-label="Прикрепить файл">📎</button>
+    <button class="support-ai-btn" id="supportAiBtn" type="button" onclick="askAiSupport()" aria-label="ИИ-помощник">✨</button>
+    <input id="supportInput" name="message" autocomplete="off" maxlength="1200" placeholder="Введите сообщение">
+    <button type="submit">➜</button>
+  </form>
+</div>
+<aside class="mobile-drawer" id="mobileDrawer">
+  <button class="drawer-close" onclick="closeMobileDrawer()">×</button>
+  <a class="drive-brand drawer-brand" href="/dashboard"><span class="drive-logo asset-logo"><img src="/assets/logo.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><svg><use href="#i-logo"/></svg></span><span>Turov Cloud</span></a>
+  <button class="drawer-item" onclick="toggleLang()"><svg><use href="#i-lang"/></svg><span data-i18n="language">Язык</span><b id="drawerLang">RU</b></button>
+  <button class="drawer-item" onclick="toggleTheme()"><svg><use href="#i-moon"/></svg><span data-i18n="theme">Тема</span><b id="drawerTheme">dark</b></button>
+  <button class="drawer-item" onclick="openFolderModal();closeMobileDrawer()"><svg><use href="#i-folder"/></svg><span data-i18n="newFolder">Новая папка</span></button>
+  <button class="drawer-item" onclick="openSupportChat();closeMobileDrawer()"><span class="support-mini-icon">💬</span><span>Поддержка на сайте</span></button>
+  <% if(!isPremium){ %><button class="drawer-premium" type="button" onclick="openPremiumModal();closeMobileDrawer()"><b data-i18n="premium">Улучшить до Premium</b><small data-i18n="premiumSubShort">4 ГБ · 24 часа · ИИ · умный ИИ</small></button><% } else { %><div class="drawer-premium premium-on"><b>Premium активен <span class="premium-star">✦</span></b><small>4 ГБ · 24 часа · умный ИИ</small></div><% } %>
+</aside>
+<div class="mobile-account-sheet" id="mobileAccountSheet">
+  <div class="sheet-card">
+    <button class="sheet-close" onclick="toggleMobileAccount(false)">×</button>
+    <div class="account-head"><span><%= (user.name||'U').slice(0,1).toLowerCase() %></span><div><b><%= user.name %> <% if(isPremium){ %><span class="premium-star" title="Premium">✦</span><% } %></b><small><%= user.email %></small></div></div>
+    <button onclick="openNameModal();toggleMobileAccount(false)"><svg><use href="#i-user"/></svg><span data-i18n="changeName">Изменить имя</span></button>
+    <button onclick="openSupportChat();toggleMobileAccount(false)"><span class="support-mini-icon">💬</span><span>Поддержка на сайте</span></button>
+    <button onclick="openPasswordModal();toggleMobileAccount(false)"><svg><use href="#i-card"/></svg><span data-i18n="changePassword">Изменить пароль</span></button>
+    <% if(user.role==='admin'){ %><a href="/admin"><svg><use href="#i-logo"/></svg><span data-i18n="admin">Админ-панель</span></a><% } %>
+    <form method="post" action="/logout"><button type="submit"><svg><use href="#i-logout"/></svg><span data-i18n="logout">Выйти</span></button></form>
+  </div>
+</div>
+
+<div class="modal premium-modal" id="premiumModal"><div class="modal-card premium-card premium-card-pro"><button type="button" onclick="closePremiumModal()" class="modal-x">×</button><div class="premium-titlebar">Premium</div><div class="premium-modal-head"><h2>Turov <span>Premium</span></h2><p>Больше лимиты, защита файлов и умный ИИ-агент в поддержке.</p></div><div class="premium-benefits premium-benefits-pro"><div><span><svg><use href="#i-logo"/></svg></span><b>4 ГБ на файл</b><small>Загружайте крупные файлы</small></div><div><span><svg><use href="#i-upload"/></svg></span><b>24 часа хранения</b><small>Файлы живут дольше</small></div><div><span><svg><use href="#i-key"/></svg></span><b>Умный ИИ-агент</b><small>Помощь прямо в чате</small></div><div><span><svg><use href="#i-lock"/></svg></span><b>Premium-значок</b><small>Звёздочка возле профиля</small></div></div><div class="premium-benefit-strip"><div class="strip-track"><span>4 ГБ на файл</span><span>24 часа хранения</span><span>Умный ИИ-агент</span><span>Пароль на приватные файлы</span><span>4 ГБ на файл</span><span>24 часа хранения</span></div></div><div class="premium-plans" id="premiumPlans"><label class="premium-plan active" onclick="selectPremiumPlan('month')"><input type="radio" name="plan" value="month" checked><i></i><span><b>1 месяц</b><small>60 ₽</small></span><strong>60 ₽<em>/месяц</em></strong></label><label class="premium-plan" onclick="selectPremiumPlan('trial')"><input type="radio" name="plan" value="trial"><i></i><span><b>5 дней</b><small>пробный доступ</small></span><strong>3 ₽</strong></label></div><label class="premium-agree premium-agree-pro"><input id="premiumAgree" type="checkbox"><span></span><em>Я согласен с условиями оферты и понимаю, что после перевода Premium выдаётся администратором.</em></label><a class="premium-pay" id="premiumPayBtn" href="/premium/pay?plan=month" target="_blank" onclick="return premiumPayClick(event)">Оформить за 60 ₽</a><small class="premium-after" id="premiumAfter">Перевод на YooMoney по кошельку. После оплаты нажмите «Я оплатил».</small></div></div>
+
+
+<div class="modal" id="folderModal"><form class="modal-card" method="post" action="/folders"><button type="button" onclick="closeFolderModal()" class="modal-x">×</button><h2 data-i18n="createFolder">Создать папку</h2><input name="name" data-i18n-placeholder="folderName" placeholder="Название папки" maxlength="60" autofocus><button type="submit" data-i18n="create">Создать</button></form></div>
+<div class="modal" id="nameModal"><form class="modal-card" method="post" action="/profile/name"><button type="button" onclick="closeNameModal()" class="modal-x">×</button><h2 data-i18n="changeName">Изменить имя</h2><input name="name" value="<%= user.name %>" maxlength="40" required><button type="submit" data-i18n="save">Сохранить</button></form></div>
+<div class="modal" id="passwordModal"><form class="modal-card" method="post" action="/profile/password"><button type="button" onclick="closePasswordModal()" class="modal-x">×</button><h2 data-i18n="changePassword">Изменить пароль</h2><input name="oldPassword" type="password" placeholder="Старый пароль" required><input name="newPassword" type="password" placeholder="Новый пароль" required><button type="submit" data-i18n="save">Сохранить</button></form></div>
+<div class="action-loader" id="uploadLoader" aria-hidden="true">
+  <div class="action-loader-card">
+    <img src="/assets/upload.gif" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="loader-fallback" style="display:none"></div>
+    <b data-i18n="uploading">Файл загружается</b>
+    <p data-i18n="uploadingSub">Подождите пару секунд, он появится плавно</p>
+    <div class="upload-progress"><span id="uploadProgressBar"></span></div><small id="uploadProgressText">0%</small>
+  </div>
+</div>
+<div class="action-loader" id="deleteLoader" aria-hidden="true">
+  <div class="action-loader-card delete-card">
+    <img src="/assets/delete.gif" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="loader-fallback delete-spin" style="display:none"></div>
+    <b data-i18n="deleting">Удаляем файл</b>
+    <p data-i18n="deletingSub">Сейчас он исчезнет из списка</p>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal private-pass-modal" id="privatePassModal" aria-hidden="true">
+  <div class="modal-card private-pass-card">
+    <button type="button" class="modal-x" onclick="cancelPrivatePassword()">×</button>
+    <div class="private-pass-icon">🔐</div>
+    <h2>Пароль для приватного файла</h2>
+    <p>Файл откроется только у владельца и по паролю. Минимум 4 символа.</p>
+    <input id="privatePassInput" type="password" autocomplete="new-password" placeholder="Введите пароль">
+    <small id="privatePassError"></small>
+    <div class="private-pass-actions">
+      <button type="button" class="ghost" onclick="cancelPrivatePassword()">Отмена</button>
+      <button type="button" class="primary" onclick="confirmPrivatePassword()">Продолжить</button>
+    </div>
+  </div>
+</div>
+
+<form id="dropUpload" action="/upload" method="post" enctype="multipart/form-data"><input type="hidden" name="folder_id" value="<%= folder || '' %>"><input type="hidden" name="visibility" value="public"><input id="dropInput" type="file" name="file"></form>
+<script>
+const USER_IS_PREMIUM=<%= isPremium ? 'true' : 'false' %>;
+const FILES=<%- JSON.stringify(files.map(f=>({id:f.id,slug:f.slug||f.id,name:f.original_name,size:fmt(f.size),views:f.views||0,downloads:f.downloads||0,lastDownload:f.last_download_at?new Date(f.last_download_at).toLocaleString('ru-RU',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'нет',private:!!f.is_private,expires:Math.max(0,Math.ceil((f.expires_at-now)/60000)),created:f.created_at || (f.expires_at-3600000)}))) %>;
+const I18N={ru:{upload:'Загрузить файл',home:'Главная',files:'Файлы',settings:'Настройки',language:'Язык',theme:'Тема',premium:'Улучшить до Premium',premiumSub:'4 ГБ · 24 часа · ИИ · умный ИИ',cabinet:'Открыть кабинет',admin:'Админ-панель',logout:'Выйти',search:'Поиск...',dateSort:'По дате',newFolder:'Новая папка',noFiles:'Пока нет файлов',noFilesSub:'Загрузите свой первый файл или перетащите<br>его прямо сюда',deleteIn:'удалится через',min:'мин.',createFolder:'Создать папку',folderName:'Название папки',create:'Создать',publicFile:'Публичный файл',privateFile:'Приватный файл',uploading:'Файл загружается',uploadingSub:'Подождите пару секунд, он появится плавно',deleting:'Удаляем файл',deletingSub:'Сейчас он исчезнет из списка',changeName:'Изменить имя',changePassword:'Изменить пароль',save:'Сохранить',account:'Аккаунт',premiumSubShort:'4 ГБ · 24 часа · ИИ · умный ИИ',selected:'выбрано',selectAll:'Выбрать все',clearSelection:'Снять',rootFolder:'В корень',moveSelected:'Переместить',deleteSelected:'Удалить'},en:{upload:'Upload file',home:'Home',files:'Files',settings:'Settings',language:'Language',theme:'Theme',premium:'Upgrade to Premium',premiumSub:'4 GB per file and 24-hour storage',cabinet:'Open dashboard',admin:'Admin panel',logout:'Log out',search:'Search...',dateSort:'By date',newFolder:'New folder',noFiles:'No files yet',noFilesSub:'Upload your first file or drag it<br>right here',deleteIn:'deletes in',min:'min.',createFolder:'Create folder',folderName:'Folder name',create:'Create',publicFile:'Public file',privateFile:'Private file',uploading:'Uploading file',uploadingSub:'Wait a second, it will appear smoothly',deleting:'Deleting file',deletingSub:'It will disappear from the list now',changeName:'Change name',changePassword:'Change password',save:'Save',account:'Account',premiumSubShort:'4 GB per file and 24-hour storage',selected:'selected',selectAll:'Select all',clearSelection:'Clear',rootFolder:'Root',moveSelected:'Move',deleteSelected:'Delete'}};
+let lang=localStorage.getItem('tc_lang')||'ru';let theme=localStorage.getItem('tc_theme')||'dark';
+function applyLang(){document.documentElement.lang=lang;document.querySelectorAll('[data-i18n]').forEach(el=>{el.innerHTML=I18N[lang][el.dataset.i18n]||el.innerHTML});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{el.placeholder=I18N[lang][el.dataset.i18nPlaceholder]||el.placeholder});document.getElementById('langBadge')&&(document.getElementById('langBadge').textContent=lang.toUpperCase());document.getElementById('drawerLang')&&(document.getElementById('drawerLang').textContent=lang.toUpperCase());}
+function toggleLang(){lang=lang==='ru'?'en':'ru';localStorage.setItem('tc_lang',lang);applyLang();toast(lang==='ru'?'Русский язык':'English language')}
+function applyTheme(){document.body.classList.toggle('light-theme',theme==='light');document.getElementById('themeBadge')&&(document.getElementById('themeBadge').textContent=theme);document.getElementById('drawerTheme')&&(document.getElementById('drawerTheme').textContent=theme);document.querySelector('#themeIcon use').setAttribute('href',theme==='light'?'#i-sun':'#i-moon')}
+function toggleTheme(){theme=theme==='dark'?'light':'dark';localStorage.setItem('tc_theme',theme);applyTheme();toast(theme==='dark'?'Тёмная тема':'Светлая тема')}
+function filterFiles(q){q=(q||'').toLowerCase();document.querySelectorAll('.search-item').forEach(c=>{c.style.display=c.dataset.name.includes(q)?'flex':'none'})}
+function toggleSortMenu(e){e.stopPropagation();document.getElementById('sortMenu')?.classList.toggle('open')}
+function sortFiles(mode){const grid=document.getElementById('files');if(!grid)return;const cards=[...grid.querySelectorAll('.file-card')];cards.sort((a,b)=>mode==='oldest'?Number(a.dataset.date)-Number(b.dataset.date):Number(b.dataset.date)-Number(a.dataset.date));cards.forEach(c=>grid.appendChild(c));document.getElementById('sortLabel').textContent=mode==='oldest'?(lang==='ru'?'Сначала старые':'Oldest first'):(lang==='ru'?'Сначала новые':'Newest first');document.getElementById('sortMenu')?.classList.remove('open');toast(mode==='oldest'?(lang==='ru'?'Показаны старые файлы':'Oldest files first'):(lang==='ru'?'Показаны новые файлы':'Newest files first'))}
+function openMobileDrawer(){document.getElementById('mobileDrawer')?.classList.add('open');document.getElementById('mobileDrawerBackdrop')?.classList.add('open')}
+function closeMobileDrawer(){document.getElementById('mobileDrawer')?.classList.remove('open');document.getElementById('mobileDrawerBackdrop')?.classList.remove('open')}
+function toggleMobileAccount(force){const el=document.getElementById('mobileAccountSheet');if(!el)return;el.classList.toggle('open',typeof force==='boolean'?force:!el.classList.contains('open'))}
+function toast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1800)}
+function showActionLoader(id){const el=document.getElementById(id);if(!el)return;el.classList.add('show');el.setAttribute('aria-hidden','false')}
+function hideActionLoader(id){const el=document.getElementById(id);if(!el)return;el.classList.remove('show');el.setAttribute('aria-hidden','true')}
+function setUploadProgress(p){const bar=document.getElementById('uploadProgressBar'),txt=document.getElementById('uploadProgressText');if(bar)bar.style.width=Math.max(0,Math.min(100,p))+'%';if(txt)txt.textContent=Math.round(p)+'%'}
+function uploadFormXHR(form,file,visibility){closeUploadMenus();showActionLoader('uploadLoader');setUploadProgress(0);const fd=new FormData();fd.append('file',file);const folder=form.querySelector('[name=folder_id]')?.value||'';fd.append('folder_id',folder);fd.append('visibility',visibility||'public');if((visibility||'public')==='private'){const pass=window.__pendingPrivatePassword||'';fd.append('file_password',pass);window.__pendingPrivatePassword='';}const xhr=new XMLHttpRequest();xhr.open('POST','/upload');xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');xhr.setRequestHeader('Accept','application/json');xhr.upload.onprogress=e=>{if(e.lengthComputable)setUploadProgress((e.loaded/e.total)*92)};xhr.onload=()=>{let r={};try{r=JSON.parse(xhr.responseText||'{}')}catch(e){}if(xhr.status>=400||r.ok===false){hideActionLoader('uploadLoader');toast(r.error||(lang==='ru'?'Ошибка загрузки':'Upload error'));return}setUploadProgress(100);setTimeout(()=>{location.href=r.redirect||'/dashboard'},360)};xhr.onerror=()=>{hideActionLoader('uploadLoader');toast(lang==='ru'?'Ошибка загрузки':'Upload error')};xhr.send(fd)}
+let __pendingPrivateUpload=null;
+function startUploadAnimation(input,visibility){
+  if(!input.files||!input.files.length)return;
+  const v=visibility||input.dataset.visibility||'public';
+  if(v==='private'){
+    __pendingPrivateUpload={input,visibility:v};
+    const m=document.getElementById('privatePassModal');
+    const err=document.getElementById('privatePassError');
+    const pass=document.getElementById('privatePassInput');
+    if(err)err.textContent='';
+    if(pass){pass.value='';setTimeout(()=>pass.focus(),80)}
+    if(m){m.classList.add('open');m.setAttribute('aria-hidden','false')}
+    return;
+  }
+  uploadFormXHR(input.form,input.files[0],v);
+}
+function cancelPrivatePassword(){
+  const m=document.getElementById('privatePassModal');
+  if(m){m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+  if(__pendingPrivateUpload?.input)__pendingPrivateUpload.input.value='';
+  __pendingPrivateUpload=null;
+}
+function confirmPrivatePassword(){
+  const passEl=document.getElementById('privatePassInput');
+  const err=document.getElementById('privatePassError');
+  const pass=(passEl?.value||'').trim();
+  if(pass.length<4){if(err)err.textContent='Минимум 4 символа';passEl?.focus();return}
+  const pending=__pendingPrivateUpload;
+  if(!pending?.input||!pending.input.files||!pending.input.files.length){cancelPrivatePassword();return}
+  window.__pendingPrivatePassword=pass;
+  const m=document.getElementById('privatePassModal');
+  if(m){m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+  __pendingPrivateUpload=null;
+  uploadFormXHR(pending.input.form,pending.input.files[0],pending.visibility);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.getElementById('privatePassModal')?.classList.contains('open'))confirmPrivatePassword();if(e.key==='Escape'&&document.getElementById('privatePassModal')?.classList.contains('open'))cancelPrivatePassword();});
+function toggleProfileMenu(e){e.stopPropagation();closeUploadMenus();document.getElementById('profileMenu').classList.toggle('open')}
+function toggleUploadMenu(e,btn){e.preventDefault();e.stopPropagation();const wrap=btn.closest('.upload-choice-wrap');const was=wrap.classList.contains('open');closeUploadMenus();if(!was)wrap.classList.add('open')}
+function closeUploadMenus(){document.querySelectorAll('.upload-choice-wrap.open').forEach(w=>w.classList.remove('open'))}
+document.addEventListener('click',()=>{document.getElementById('profileMenu')?.classList.remove('open');document.getElementById('sortMenu')?.classList.remove('open');closeUploadMenus();});
+function openFolderModal(){document.getElementById('folderModal').classList.add('open');setTimeout(()=>document.querySelector('#folderModal input')?.focus(),50)}function closeFolderModal(){document.getElementById('folderModal').classList.remove('open')}function openNameModal(){document.getElementById('nameModal').classList.add('open');document.getElementById('profileMenu')?.classList.remove('open')}function closeNameModal(){document.getElementById('nameModal').classList.remove('open')}function openPasswordModal(){document.getElementById('passwordModal').classList.add('open');document.getElementById('profileMenu')?.classList.remove('open')}function closePasswordModal(){document.getElementById('passwordModal').classList.remove('open')}function openPremiumModal(){document.getElementById('premiumModal')?.classList.add('open');selectPremiumPlan(document.querySelector('[name=plan]:checked')?.value||'month')}function closePremiumModal(){document.getElementById('premiumModal')?.classList.remove('open')}function selectPremiumPlan(plan){document.querySelectorAll('.premium-plan').forEach(l=>{const checked=l.querySelector('input')?.value===plan;l.classList.toggle('active',checked);const input=l.querySelector('input');if(input)input.checked=checked});const btn=document.getElementById('premiumPayBtn');const after=document.getElementById('premiumAfter');if(btn){btn.href='/premium/pay?plan='+plan;btn.textContent=plan==='trial'?'Оформить 5 дней за 3 ₽':'Оформить за 60 ₽'}if(after)after.textContent=plan==='trial'?'Пробный Premium на 5 дней. Перевод на YooMoney вручную.':'Premium на 1 месяц. Перевод на YooMoney вручную.'}function premiumPayClick(e){const ok=document.getElementById('premiumAgree')?.checked;if(!ok){e.preventDefault();toast(lang==='ru'?'Сначала поставьте галочку согласия':'Please accept first');return false}return true}
+function copyLink(v){navigator.clipboard.writeText(v);toast(lang==='ru'?'Ссылка скопирована':'Link copied')}
+function openDetails(i){const f=FILES[i], url=location.origin+'/file/'+(f.slug||f.id), tg='https://t.me/share/url?url='+encodeURIComponent(url), lock=f.private?'<span class="privacy-badge"><svg><use href="#i-lock"/></svg>'+(lang==='ru'?'Приватный':'Private')+'</span>':'<span class="privacy-badge public"><svg><use href="#i-upload"/></svg>'+(lang==='ru'?'Публичный':'Public')+'</span>';document.getElementById('detailsInner').innerHTML=`<h2><svg><use href="${f.private?'#i-lock':'#i-file'}"/></svg><span>${escapeHtml(f.name)}</span></h2>${lock}<label>${lang==='ru'?'Красивая ссылка на файл':'Pretty file link'}</label><div class="linkrow"><input readonly value="${url}"><button onclick="copyLink('${url}')"><svg><use href='#i-copy'/></svg></button><a href="${url}" target="_blank"><svg><use href='#i-external'/></svg></a></div><h3>${lang==='ru'?'Статистика':'Stats'}</h3><div class="detail-stats"><div><b id="detailViews">${f.views||0}</b><span>${lang==='ru'?'Просмотры':'Views'}</span></div><div><b id="detailDownloads">${f.downloads}</b><span>${lang==='ru'?'Скачивания':'Downloads'}</span></div><div><b id="detailExpires">${f.expires}</b><span>${lang==='ru'?'Минут':'Minutes'}</span></div><div><b id="detailAccess">${f.private?'🔒':'🌍'}</b><span>${lang==='ru'?'Доступ':'Access'}</span></div></div><div class="detail-card"><b>${lang==='ru'?'Последнее скачивание':'Last download'}</b><span id="detailLastDownload">${f.lastDownload||'нет'}</span></div><div class="detail-card"><b>${lang==='ru'?'Тип ссылки':'Link type'}</b><strong>${f.private?(lang==='ru'?'Приватная':'Private'):(lang==='ru'?'Публичная':'Public')}</strong><p>${f.private?(lang==='ru'?'Файл доступен только владельцу аккаунта и защищён паролем.':'Only the account owner can open this file.'):(lang==='ru'?'Любой человек со ссылкой сможет скачать файл.':'Anyone with the link can download this file.')}</p></div><div class="detail-actions"><button onclick="copyLink('${url}')"><svg><use href='#i-copy'/></svg> ${lang==='ru'?'Скопировать':'Copy'}</button><form method="post" action="/delete/${f.id}"><button class="red" type="submit"><svg><use href='#i-trash'/></svg> ${lang==='ru'?'Удалить':'Delete'}</button></form></div>`;document.getElementById('detailsPanel').classList.add('open');document.body.classList.add('details-open');window.__openDetailFileId=f.id;refreshOpenFileStats();}
+async function refreshOpenFileStats(){if(!window.__openDetailFileId)return;try{const r=await fetch('/api/file/'+encodeURIComponent(window.__openDetailFileId)+'/stats',{cache:'no-store'}).then(x=>x.json());if(!r.ok)return;const s=r.stats;const f=FILES.find(x=>x.id===window.__openDetailFileId);if(f){f.views=s.views;f.downloads=s.downloads;f.expires=s.expires;f.lastDownload=s.lastDownload}document.getElementById('detailViews')&&(document.getElementById('detailViews').textContent=s.views);document.getElementById('detailDownloads')&&(document.getElementById('detailDownloads').textContent=s.downloads);document.getElementById('detailExpires')&&(document.getElementById('detailExpires').textContent=s.expires);document.getElementById('detailLastDownload')&&(document.getElementById('detailLastDownload').textContent=s.lastDownload)}catch(e){}}
+setInterval(refreshOpenFileStats,2500);
+function closeDetails(){document.getElementById('detailsPanel').classList.remove('open');document.body.classList.remove('details-open')}
+function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+const dz=document.getElementById('dropZone');let driveDragDepth=0;if(dz){dz.addEventListener('dragenter',e=>{e.preventDefault();driveDragDepth++;dz.classList.add('dragover')});dz.addEventListener('dragover',e=>{e.preventDefault();dz.classList.add('dragover')});dz.addEventListener('dragleave',e=>{e.preventDefault();driveDragDepth=Math.max(0,driveDragDepth-1);if(!driveDragDepth)dz.classList.remove('dragover')});dz.addEventListener('drop',e=>{e.preventDefault();driveDragDepth=0;dz.classList.remove('dragover');const f=e.dataTransfer.files[0];if(!f)return;const input=document.getElementById('dropInput');const dt=new DataTransfer();dt.items.add(f);input.files=dt.files;uploadFormXHR(document.getElementById('dropUpload'),f,'public')});}
+document.addEventListener('submit',e=>{const form=e.target;if(!form.action||!form.action.includes('/delete/'))return;e.preventDefault();if(typeof closeFileMenu==='function')closeFileMenu();if(typeof clearSelection==='function')clearSelection();showActionLoader('deleteLoader');const card=form.closest('.file-card')||document.querySelector('.file-card:hover');if(card)card.classList.add('file-removing');setTimeout(()=>form.submit(),720)});
+
+
+function selectedIds(){return [...document.querySelectorAll('.select-file input:checked')].map(i=>i.value)}
+function updateSelection(){const ids=selectedIds();document.querySelectorAll('.file-card').forEach(c=>{const cb=c.querySelector('.select-file input');c.classList.toggle('selected',!!cb?.checked)});const bar=document.getElementById('selectionToolbar');if(bar){bar.classList.toggle('open',ids.length>0);bar.setAttribute('aria-hidden',ids.length?'false':'true')}const cnt=document.getElementById('selectedCount');if(cnt)cnt.textContent=ids.length}
+function selectAllFiles(){document.querySelectorAll('.file-card:not([style*="display: none"]) .select-file input').forEach(i=>i.checked=true);updateSelection()}
+function clearSelection(){document.querySelectorAll('.select-file input').forEach(i=>i.checked=false);updateSelection()}
+function submitBulkDelete(){const ids=selectedIds();if(!ids.length)return toast(lang==='ru'?'Выберите файлы':'Select files');if(!confirm(lang==='ru'?'Удалить выбранные файлы?':'Delete selected files?'))return;if(typeof closeFileMenu==='function')closeFileMenu();document.getElementById('selectionToolbar')?.classList.remove('open');document.getElementById('selectionToolbar')?.setAttribute('aria-hidden','true');document.getElementById('bulkDeleteIds').value=ids.join(',');showActionLoader('deleteLoader');document.querySelectorAll('.file-card.selected').forEach(c=>c.classList.add('file-removing'));setTimeout(()=>document.getElementById('bulkDeleteForm').submit(),520)}
+function submitBulkMove(){const ids=selectedIds();if(!ids.length)return toast(lang==='ru'?'Выберите файлы':'Select files');document.getElementById('bulkMoveIds').value=ids.join(',');toast(lang==='ru'?'Перемещаем файлы':'Moving files');document.getElementById('bulkMoveForm').submit()}
+
+function b64urlToBuf(v){const pad='='.repeat((4-v.length%4)%4);const s=(v+pad).replace(/-/g,'+').replace(/_/g,'/');const bin=atob(s);const buf=new ArrayBuffer(bin.length);const bytes=new Uint8Array(buf);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return buf}
+function bufToB64url(buf){const bytes=new Uint8Array(buf);let bin='';bytes.forEach(b=>bin+=String.fromCharCode(b));return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
+function prepRegOptions(o){o.challenge=b64urlToBuf(o.challenge);if(o.user&&typeof o.user.id==='string')o.user.id=b64urlToBuf(o.user.id);if(o.excludeCredentials)o.excludeCredentials=o.excludeCredentials.map(c=>({...c,id:b64urlToBuf(c.id)}));return o}
+function packRegCredential(c){return {id:c.id,rawId:bufToB64url(c.rawId),type:c.type,response:{attestationObject:bufToB64url(c.response.attestationObject),clientDataJSON:bufToB64url(c.response.clientDataJSON),transports:c.response.getTransports?c.response.getTransports():[]},clientExtensionResults:c.getClientExtensionResults?c.getClientExtensionResults():{}}}
+async function registerPasskey(btn){try{if(!window.PublicKeyCredential)throw new Error('passkeys_not_supported');btn.classList.add('loading');toast('Открой окно Windows Hello / Face ID');const opt=await fetch('/passkey/register/options',{method:'POST'}).then(r=>r.json());const cred=await navigator.credentials.create({publicKey:prepRegOptions(opt)});const result=await fetch('/passkey/register/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(packRegCredential(cred))}).then(r=>r.json());toast(result.ok?'Быстрый вход привязан':'Не удалось привязать passkey')}catch(e){toast('Passkey доступен только на HTTPS или localhost')}finally{btn.classList.remove('loading');document.getElementById('profileMenu')?.classList.remove('open')}}
+
+function openFileMenu(e,idx){e.preventDefault();e.stopPropagation();document.querySelector('.ios-file-menu')?.remove();const f=FILES[idx];const r=e.target.getBoundingClientRect();const menu=document.createElement('div');menu.className='ios-file-menu';menu.innerHTML=`<button type="button" onclick="selectOneFromMenu('${f.id}')">Выбрать</button><button type="button" onclick="selectAllFiles();closeFileMenu()">Выбрать все</button><button class="danger" type="button" onclick="deleteFileFromMenu('${f.id}')"><svg><use href='#i-trash'/></svg>Удалить</button>`;document.body.appendChild(menu);const mw=240;let left=Math.min(innerWidth-mw-14,Math.max(14,r.right-mw+8));let top=Math.min(innerHeight-210,Math.max(12,r.bottom+8));menu.style.left=left+'px';menu.style.top=top+'px';requestAnimationFrame(()=>menu.classList.add('open'))}
+function closeFileMenu(){const m=document.querySelector('.ios-file-menu');if(!m)return;m.classList.remove('open');m.classList.add('removing');setTimeout(()=>m.remove(),140)}
+function selectOneFromMenu(id){const cb=document.querySelector(`.select-file input[value="${CSS.escape(id)}"]`);if(cb){cb.checked=true;updateSelection()}closeFileMenu()}
+function deleteFileFromMenu(id){closeFileMenu();if(typeof clearSelection==='function')clearSelection();showActionLoader('deleteLoader');const card=document.querySelector(`.file-card[data-id="${CSS.escape(id)}"]`);if(card)card.classList.add('file-removing');const form=document.createElement('form');form.method='post';form.action='/delete/'+encodeURIComponent(id);form.style.display='none';document.body.appendChild(form);setTimeout(()=>form.submit(),520)}
+document.addEventListener('click',e=>{if(!e.target.closest('.ios-file-menu')&&!e.target.closest('.file-dots'))closeFileMenu()});
+let supportTimer=null,lastSupportHash='';
+function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function fmtSupportSize(n){n=Number(n||0);if(!n)return '';if(n<1024)return n+' Б';if(n<1024*1024)return Math.round(n/1024)+' КБ';return (n/1024/1024).toFixed(1)+' МБ'}
+
+function isSupportImage(m){return String(m.attachment_mime||'').startsWith('image/')}
+function supportAttachmentHtml(m){
+  if(!m.attachment_name)return '';
+  const name=escapeHtml(m.attachment_name);
+  const size=fmtSupportSize(m.attachment_size);
+  const fileUrl='/support/file/'+encodeURIComponent(m.id);
+  const inlineUrl='/support/inline/'+encodeURIComponent(m.id);
+  if(isSupportImage(m)){
+    return '<a class="support-photo" href="'+fileUrl+'" target="_blank"><img src="'+inlineUrl+'" alt="'+name+'"><span>'+name+' · '+size+'</span></a>';
+  }
+  return '<a class="support-attachment" href="'+fileUrl+'" target="_blank">📎 '+name+' <small>'+size+'</small></a>';
+}
+async function loadSupportMessages(force=false){const box=document.getElementById('supportMessages');if(!box)return;try{const r=await fetch('/support/messages',{cache:'no-store'}).then(x=>x.json());if(!r.ok)return;const hash=JSON.stringify(r.messages||[]);if(!force&&hash===lastSupportHash)return;lastSupportHash=hash;box.innerHTML=r.messages.length?'':'<div class="support-empty">Напишите вопрос — мы поможем.</div>';r.messages.forEach(m=>{const el=document.createElement('div');el.className='support-bubble '+(m.author==='admin'?'admin':'user');let html='';if(m.message)html+='<div>'+escapeHtml(m.message)+'</div>';if(m.attachment_name)html+=supportAttachmentHtml(m);el.innerHTML=html;box.appendChild(el)});box.scrollTop=box.scrollHeight}catch(e){}}
+function openSupportChat(){const chat=document.getElementById('supportChat');if(!chat)return;chat.classList.remove('closing');chat.classList.add('open');setTimeout(()=>document.getElementById('supportInput')?.focus(),260);loadSupportMessages(true);clearInterval(supportTimer);supportTimer=setInterval(()=>loadSupportMessages(false),1800)}
+function closeSupportChat(){const chat=document.getElementById('supportChat');if(!chat)return;chat.classList.add('closing');clearInterval(supportTimer);supportTimer=null;setTimeout(()=>{chat.classList.remove('closing');chat.classList.remove('open')},420)}
+function showSupportFileName(){const f=document.getElementById('supportFile')?.files?.[0];const chip=document.getElementById('supportFileChip');if(!chip)return;if(!f){chip.style.display='none';chip.innerHTML='';return}chip.style.display='block';chip.innerHTML='Прикреплён файл: <b>'+escapeHtml(f.name)+'</b> <button type="button" onclick="clearSupportFile()">×</button>'}
+function clearSupportFile(){const input=document.getElementById('supportFile');if(input)input.value='';showSupportFileName()}
+async function sendSupportMessage(e){e.preventDefault();const input=document.getElementById('supportInput');const file=document.getElementById('supportFile');const msg=(input.value||'').trim();if(!msg&&!(file&&file.files&&file.files[0]))return;const fd=new FormData();fd.append('message',msg);if(file&&file.files&&file.files[0])fd.append('file',file.files[0]);input.value='';clearSupportFile();await fetch('/support/messages',{method:'POST',body:fd});loadSupportMessages(true)}async function askAiSupport(){if(!USER_IS_PREMIUM){openPremiumModal();toast('ИИ-помощник доступен в Premium');return}const input=document.getElementById('supportInput');const btn=document.getElementById('supportAiBtn');const msg=(input?.value||'').trim();try{if(btn)btn.classList.add('loading');if(msg){const fd=new FormData();fd.append('message',msg);input.value='';await fetch('/support/messages',{method:'POST',body:fd});await loadSupportMessages(true)}const box=document.getElementById('supportMessages');let thinking=null;if(box){thinking=document.createElement('div');thinking.className='support-message-row admin support-thinking';thinking.innerHTML='<div class="support-avatar">✨</div><div class="support-message-body"><div class="support-author">ИИ-помощник</div><div class="support-bubble admin"><span></span><span></span><span></span></div></div>';box.appendChild(thinking);box.scrollTop=box.scrollHeight}const r=await fetch('/api/ai-support',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg})}).then(x=>x.json());if(thinking)thinking.remove();if(r.premium_required){openPremiumModal();toast('ИИ-помощник доступен в Premium');return}if(!r.ok)toast(r.message||'ИИ пока не подключён');await loadSupportMessages(true)}catch(e){toast('ИИ сейчас не ответил')}finally{if(btn)btn.classList.remove('loading')}}
+
+
+let statsChartState={labels:[],views:[],downloads:[]};
+function money(v,d=2){return '$'+Number(v||0).toFixed(d)}
+function initStatsChartFromDays(days){if(!Array.isArray(days))return;statsChartState.labels=days.map(x=>x.label);statsChartState.views=days.map(x=>Number(x.views||0));statsChartState.downloads=days.map(x=>Number(x.downloads||0));drawStatsChart()}
+function drawStatsChart(){const canvas=document.getElementById('statsLiveChart');if(!canvas)return;const ctx=canvas.getContext('2d');const dpr=Math.max(1,window.devicePixelRatio||1);const rect=canvas.getBoundingClientRect();const w=Math.max(320,Math.floor(rect.width*dpr));const h=Math.max(190,Math.floor(rect.height*dpr));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h}ctx.clearRect(0,0,w,h);const pad=34*dpr;const labels=statsChartState.labels.length?statsChartState.labels:['сейчас'];const views=statsChartState.views.length?statsChartState.views:[0];const downloads=statsChartState.downloads.length?statsChartState.downloads:[0];const max=Math.max(1,...views,...downloads);const plotW=w-pad*2,plotH=h-pad*2;const gx=i=>pad+(labels.length===1?plotW:plotW*i/(labels.length-1));const gy=v=>pad+plotH-(v/max)*plotH;ctx.save();ctx.globalAlpha=.45;ctx.strokeStyle='rgba(255,255,255,.09)';ctx.lineWidth=1*dpr;for(let i=0;i<5;i++){const y=pad+plotH*i/4;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke()}ctx.restore();function line(data,color,fill){ctx.beginPath();data.forEach((v,i)=>{const x=gx(i),y=gy(v);if(i===0)ctx.moveTo(x,y);else{const px=gx(i-1),py=gy(data[i-1]);const cx=(px+x)/2;ctx.bezierCurveTo(cx,py,cx,y,x,y)}});if(fill){const grad=ctx.createLinearGradient(0,pad,0,h-pad);grad.addColorStop(0,fill);grad.addColorStop(1,'rgba(0,0,0,0)');ctx.lineTo(gx(data.length-1),h-pad);ctx.lineTo(gx(0),h-pad);ctx.closePath();ctx.fillStyle=grad;ctx.fill();ctx.beginPath();data.forEach((v,i)=>{const x=gx(i),y=gy(v);if(i===0)ctx.moveTo(x,y);else{const px=gx(i-1),py=gy(data[i-1]);const cx=(px+x)/2;ctx.bezierCurveTo(cx,py,cx,y,x,y)}})}ctx.strokeStyle=color;ctx.lineWidth=3*dpr;ctx.lineCap='round';ctx.lineJoin='round';ctx.shadowColor=color;ctx.shadowBlur=14*dpr;ctx.stroke();ctx.shadowBlur=0;const lastX=gx(data.length-1),lastY=gy(data[data.length-1]||0);ctx.fillStyle=color;ctx.beginPath();ctx.arc(lastX,lastY,4.5*dpr,0,Math.PI*2);ctx.fill()}line(views,'#3b82ff','rgba(59,130,255,.18)');line(downloads,'#8b5cf6','rgba(139,92,246,.16)');ctx.fillStyle='rgba(255,255,255,.55)';ctx.font=(11*dpr)+'px system-ui, sans-serif';ctx.fillText(String(max),pad,18*dpr);ctx.fillText('0',pad,h-10*dpr)}
+async function refreshStatsPage(){const box=document.getElementById('statsDashboard');if(!box)return;try{const r=await fetch('/api/stats',{cache:'no-store'}).then(x=>x.json());if(!r.ok)return;const s=r.stats||{};const views=Number(s.views||0),downloads=Number(s.downloads||0),visitors=Number(s.visitors||0);const revenue=(views/1000)*0.1;const rate=views?downloads/views*100:0;const visitorRevenue=visitors?revenue/visitors:0;const set=(id,val)=>{const el=document.getElementById(id);if(el&&el.textContent!==String(val)){el.classList.add('stat-pulse');el.textContent=val;setTimeout(()=>el.classList.remove('stat-pulse'),420)}};set('kpiRate',rate.toFixed(2)+'%');set('kpiRpm',money(revenue,2));set('kpiVisitor',money(visitorRevenue,3));set('kpiViews',views+' просмотров');set('kpiDownloads',downloads+' скач.');set('kpiVisitors',visitors+' посет.');if(Array.isArray(s.days))initStatsChartFromDays(s.days)}catch(e){}}
+if(document.getElementById('statsDashboard')){refreshStatsPage();setInterval(refreshStatsPage,2200);window.addEventListener('resize',drawStatsChart)}
+
+applyLang();applyTheme();
+
+/* ===== v40 premium support chat behavior ===== */
+function supportTime(ts){try{return new Date(ts||Date.now()).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
+function supportAuthor(author){return author==='admin'?'Поддержка':'Пользователь'}
+function supportAvatar(author){return author==='admin'?'🤖':'👤'}
+async function loadSupportMessages(force=false){const box=document.getElementById('supportMessages');if(!box)return;try{const r=await fetch('/support/messages',{cache:'no-store'}).then(x=>x.json());if(!r.ok)return;const hash=JSON.stringify(r.messages||[]);if(!force&&hash===lastSupportHash)return;lastSupportHash=hash;box.innerHTML=r.messages.length?'':'<div class="support-empty">Напишите вопрос — мы поможем.</div>';(r.messages||[]).forEach(m=>{const row=document.createElement('div');row.className='support-message-row '+(m.author==='admin'?'admin':'user');let html='<div class="support-avatar">'+supportAvatar(m.author)+'</div><div class="support-message-body"><div class="support-author">'+supportAuthor(m.author)+'</div><div class="support-bubble '+(m.author==='admin'?'admin':'user')+'">';if(m.message)html+='<div>'+escapeHtml(m.message)+'</div>';if(m.attachment_name)html+=supportAttachmentHtml(m);html+='</div><div class="support-time">'+supportTime(m.created_at)+'</div></div>';row.innerHTML=html;box.appendChild(row)});box.scrollTop=box.scrollHeight}catch(e){}}
+function showSupportFileName(){const f=document.getElementById('supportFile')?.files?.[0];const chip=document.getElementById('supportFileChip');if(!chip)return;if(!f){chip.style.display='none';chip.innerHTML='';return}chip.style.display='block';chip.innerHTML='👀 Файл готов: <b>'+escapeHtml(f.name)+'</b> <button type="button" onclick="clearSupportFile()">×</button>'}
+function initPremiumSupportDrag(){const chat=document.getElementById('supportChat');const file=document.getElementById('supportFile');if(!chat||!file||chat.dataset.dragReady)return;chat.dataset.dragReady='1';['dragenter','dragover'].forEach(ev=>chat.addEventListener(ev,e=>{e.preventDefault();chat.classList.add('dragging')}));['dragleave','drop'].forEach(ev=>chat.addEventListener(ev,e=>{e.preventDefault();if(ev==='drop'&&e.dataTransfer?.files?.length){file.files=e.dataTransfer.files;showSupportFileName();document.getElementById('supportInput')?.focus()}chat.classList.remove('dragging')}));}
+const _oldOpenSupportChat=openSupportChat;openSupportChat=function(){_oldOpenSupportChat();initPremiumSupportDrag();}
+document.addEventListener('DOMContentLoaded',initPremiumSupportDrag);
+</script>
+<script>(function(){var loader=document.getElementById('tcPreloader');if(!loader)return;var seen=false;try{seen=sessionStorage.getItem('tc_splash_seen')==='1'}catch(e){}if(seen){if(loader.parentNode)loader.parentNode.removeChild(loader);return}try{sessionStorage.setItem('tc_splash_seen','1')}catch(e){}var started=Date.now();var min=850;function hide(){var wait=Math.max(0,min-(Date.now()-started));setTimeout(function(){loader.classList.add('tc-preloader-hide');setTimeout(function(){if(loader&&loader.parentNode)loader.parentNode.removeChild(loader)},620)},wait)}if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide,{once:true});setTimeout(hide,2600)}})();</script></body></html>
