@@ -29,6 +29,39 @@ jobs:
         with:
           gradle-version: 8.9
 
+      - name: Generate Android launcher icons
+        working-directory: android-webview
+        run: |
+          python3 -m pip install pillow
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+
+          src = Path("app-icon.png")
+          if not src.exists():
+              raise SystemExit("app-icon.png not found in android-webview")
+
+          sizes = {
+              "mipmap-mdpi": 48,
+              "mipmap-hdpi": 72,
+              "mipmap-xhdpi": 96,
+              "mipmap-xxhdpi": 144,
+              "mipmap-xxxhdpi": 192,
+          }
+
+          img = Image.open(src).convert("RGBA")
+
+          for folder, size in sizes.items():
+              out_dir = Path("app/src/main/res") / folder
+              out_dir.mkdir(parents=True, exist_ok=True)
+
+              resized = img.resize((size, size), Image.LANCZOS)
+              resized.save(out_dir / "ic_launcher.png")
+              resized.save(out_dir / "ic_launcher_round.png")
+
+          print("Launcher icons generated")
+          PY
+
       - name: Build debug APK
         working-directory: android-webview
         run: gradle assembleDebug
